@@ -35,7 +35,7 @@ module testbench;
         end
     end
 
-    // ---------------- Detect the halt loop and stop ----------------
+    //Detect the halt loop and stop 
     reg [31:0] previous_pc;
     reg first_cycle_after_reset;
 
@@ -47,7 +47,7 @@ module testbench;
         end else begin
             if (!first_cycle_after_reset && cpu_inst.current_pc == previous_pc) begin
                 #1;
-                $display("\n===== Program finished (reached halt loop) =====");
+                $display("\n Program finished");
                 print_registers;
                 print_memory;
                 $finish;
@@ -60,7 +60,7 @@ module testbench;
 
     initial begin
         #10000;
-        $display("\n===== TIMEOUT: program never reached a halt loop =====");
+        $display("\n TIMEOUT: program never reached a halt loop ");
         print_registers;
         $finish;
     end
@@ -69,7 +69,7 @@ module testbench;
     task print_registers;
         integer i;
         begin
-            $display("---- Registers ----");
+            $display("Registers");
             for (i = 0; i < 32; i = i + 1) begin
                 if (cpu_inst.regfile_inst.registers[i] != 0)
                     $display("x%0d = %0d", i, cpu_inst.regfile_inst.registers[i]);
@@ -80,7 +80,7 @@ module testbench;
     task print_memory;
         integer i;
         begin
-            $display("---- Data memory (first 16 words) ----");
+            $display("Data memory");
             for (i = 0; i < 16; i = i + 1) begin
                 $display("mem[%0d] = %0d", i, cpu_inst.dmem_inst.mem[i]);
             end
