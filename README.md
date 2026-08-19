@@ -7,20 +7,35 @@ This is the RISC-V implementation CPU that implements the architecture provided 
 The instruction set that it supports is given below
 
 add rd, rs1, rs2
+
 sub rd, rs1, rs2
+
 addi rd, rs1, imm
+
 lw rd, imm(rs1)
+
 sw rs2, imm(rs1)
+
 beq rs1, rs2, label
+
 bne rs1, rs2, label
+
 blt rs1, rs2, label
+
 rd = rs1 + rs2
+
 rd = rs1 - rs2
+
 rd = rs1 + imm
+
 rd = memory[rs1 + imm]
+
 memory[rs1 + imm] = rs2
+
 jump to label if rs1 == rs2
+
 jump to label if rs1 != rs2
+
 jump to label if rs1 < rs2
 
 ## What happens in a single cycle 
